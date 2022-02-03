@@ -1,0 +1,28 @@
+{
+  "name": "hazeli",
+  "description": "Messing around with stuff for kiddos.",
+  "version": "0.0.1",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tublitzed/hazeli.git"
+  },
+  "author": "tublitzed@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tublitzed/hazeli/issues"
+  },
+  "homepage": "https://github.com/tublitzed/hazeli#readme"
+}
