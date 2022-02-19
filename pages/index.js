@@ -9,36 +9,32 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className="title">
-          Coming Soon...
-        </h1>
+          <a href="/h">Hazel</a>
+          <a href="/e">Eli</a>
       </main>
 
       <style jsx>{`
         .container {
           min-height: 100vh;
-          padding: 0 0.5rem;
           display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
         }
 
         main {
-          padding: 5rem 0;
-          flex: 1;
+          padding: 1em 0;
           display: flex;
-          flex-direction: column;
-          justify-content: center;
+          width: 100%;
           align-items: center;
+          justify-content: center;
         }
 
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
+        main a {
+          padding: 40vh 2em;
+          border: 1px solid #ccc;
           text-align: center;
-          color: #3578ce;
+          width: 50%;
+          margin: 1em 0 1em 1em;
+          font-size: 3rem;
+          font-weight: bold;
         }
       `}</style>
 
