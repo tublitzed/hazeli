@@ -7,7 +7,7 @@ export default function Layout({ children }) {
       <Head>
         <title>Hazeli</title>
       </Head>
-      <main className={styles.main}>{children}</main>
+      <div className={styles.app}>{children}</div>
     </>
   )
 }

@@ -11,3 +11,18 @@ body {
 * {
   box-sizing: border-box;
 }
+
+/* TODO: sort out vars with modules properly */
+a {
+  color: #ca3cce;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #8e2691;
+  text-decoration: none;
+}
+
+a:active {
+  color: #ca3cce;
+}

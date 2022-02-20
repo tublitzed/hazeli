@@ -1,0 +1,42 @@
+.home {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.home a {
+  color: #FFF;
+  text-align: center;
+  font-size: 5rem;
+  display: flex;
+  justify-content: center;
+  flex: 50%;
+  text-decoration: none;
+  transition: all 200ms;
+}
+
+.home a:hover {
+  color: #ca3cce;
+}
+
+.home a.hazel:hover {
+  background: #192442;
+}
+
+.home a.eli:hover {
+  background: #153e3e;
+}
+
+.hazel {
+  background: #202f55;
+}
+
+.eli {
+  background: #1c5151;
+}
+
+.home a span {
+  align-self: center;
+  display: block;
+}
