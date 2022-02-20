@@ -1,0 +1,23 @@
+.header {
+  width: 100%;
+  padding: 1em;
+  background: #ca3cce;
+}
+
+.header a {
+  color: #FFF;
+}
+
+.breadcrumbs {
+  display: inline;
+}
+
+.breadcrumbs span:first-child {
+  color: #ccc;
+}
+
+.breadcrumbs span {
+  margin-left: 5px;
+}
+
+

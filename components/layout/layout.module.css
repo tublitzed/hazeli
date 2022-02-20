@@ -1,21 +1,12 @@
-/* main {
-  padding: 1em 0;
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
-main a {
-  padding: 40vh 2em;
-  border: 1px solid #ccc;
-  text-align: center;
-  width: 50%;
-  margin: 1em 0 1em 1em;
-  font-size: 3rem;
-  font-weight: bold;
-} */
 
 .app {
+
+}
+
+.appContent {
   padding: 1em;
+}
+
+.Home .appContent {
+  padding: 0;
 }

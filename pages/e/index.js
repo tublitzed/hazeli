@@ -1,9 +1,7 @@
-import { Layout } from '../../components';
-
 export default function Index() {
   return (
     <main>
-      Eli's stuff here
+      <h2>Eli's Stuff Here</h2>
     </main>
   );
 }

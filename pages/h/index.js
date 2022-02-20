@@ -1,9 +1,9 @@
-import { Layout } from '../../components';
-
+import Link from 'next/link';
 export default function Index() {
   return (
     <main>
-      Hazel's stuff here
+      <h2>Hazel's Stuff Here</h2>
+      <Link href="/h/animal">Animal Book</Link>
     </main>
   );
 }

@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   background: #d4e7ff;
@@ -8,8 +12,8 @@ body {
     sans-serif;
 }
 
-* {
-  box-sizing: border-box;
+body {
+  color: #1e1e1e;
 }
 
 /* TODO: sort out vars with modules properly */

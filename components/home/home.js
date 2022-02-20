@@ -1,5 +1,4 @@
 import Link from 'next/link';
-
 import { Layout } from '../../components';
 import styles from './home.module.css';
 
@@ -10,4 +9,12 @@ export default function Home() {
       <a href="/e" className={styles.eli}><span>Eli</span></a>
     </div>
   );
+}
+
+Home.getLayout = function getLayout(page) {
+  return (
+    <Layout pageName='Home'>
+      {page}
+    </Layout>
+  )
 }
