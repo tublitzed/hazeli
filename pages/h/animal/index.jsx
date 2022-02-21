@@ -1,20 +1,30 @@
-import Link from 'next/link';
-import { VideoPlayer } from '../../../components';
+import { Layout, VideoPlayer, Sidebar } from '@components';
+import { SIDEBAR_ANIMAL_BOOK } from '@helpers/constants';
+import { VIDEO_PLAYER_CONFIG } from '@components/video-player/videoPlayer';
 
 export default function Index() {
   const videoJsOptions = {
-    controls: true,
+    ...VIDEO_PLAYER_CONFIG,
     sources: [
       {
-        src: '//vjs.zencdn.net/v/oceans.mp4',
+        src: '/videos/animal-book/intro.mp4',
         type: 'video/mp4',
       },
     ],
   };
   return (
-    <main>
+    <>
       <h2>Animal Book</h2>
       <VideoPlayer {...videoJsOptions} />
-    </main>
+    </>
   );
 }
+
+Index.getLayout = function getLayout(page) {
+  return (
+    <Layout>
+      <Sidebar config={SIDEBAR_ANIMAL_BOOK} />
+      {page}
+    </Layout>
+  );
+};

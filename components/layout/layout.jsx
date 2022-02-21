@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Header } from '../../components';
+import { Header } from '@components';
 import styles from './layout.module.scss';
 
 export default function Layout({ children, pageName = '' }) {

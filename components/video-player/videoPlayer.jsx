@@ -1,6 +1,17 @@
 import React from 'react';
 import videojs from 'video.js';
 import 'video.js/dist/video-js.css';
+import styles from './videoPlayer.module.scss';
+
+export const VIDEO_PLAYER_CONFIG = {
+  controls: true,
+  responsive: true,
+  height: 500,
+  // breakpoints: {
+  //   small: 1500,
+  // },
+  // fluid: true,
+};
 
 export default class VideoPlayer extends React.Component {
   componentDidMount() {
@@ -20,11 +31,13 @@ export default class VideoPlayer extends React.Component {
   // see https://github.com/videojs/video.js/pull/3856
   render() {
     return (
-      <div data-vjs-player>
-        <video
-          ref={(node) => (this.videoNode = node)}
-          className="video-js"
-        ></video>
+      <div className={styles.videoPlayer}>
+        <div data-vjs-player>
+          <video
+            ref={(node) => (this.videoNode = node)}
+            className="video-js"
+          ></video>
+        </div>
       </div>
     );
   }

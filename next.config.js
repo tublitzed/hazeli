@@ -9,6 +9,21 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
+  webpack: (config) => {
+    config.resolve.alias['@components'] = path.resolve(
+      path.join(__dirname, 'components')
+    );
+    config.resolve.alias['@constants'] = path.resolve(
+      path.join(__dirname, 'components/helpers/constants.js')
+    );
+    config.resolve.alias['@helpers'] = path.resolve(
+      path.join(__dirname, 'components/helpers')
+    );
+    config.resolve.alias['@styles'] = path.resolve(
+      path.join(__dirname, 'styles')
+    );
+    return config;
+  },
 };
 
 module.exports = nextConfig;
