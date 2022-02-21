@@ -1,20 +1,24 @@
 import Link from 'next/link';
 import { Layout } from '../../components';
-import styles from './home.module.css';
+import styles from './home.module.scss';
 
 export default function Home() {
   return (
     <div className={styles.home}>
-      <a href="/h" className={styles.hazel}><span>Hazel</span></a>
-      <a href="/e" className={styles.eli}><span>Eli</span></a>
+      <Link href="/h">
+        <a className={styles.hazel}>
+          <span>Hazel</span>
+        </a>
+      </Link>
+      <Link href="/e">
+        <a className={styles.eli}>
+          <span>Eli</span>
+        </a>
+      </Link>
     </div>
   );
 }
 
 Home.getLayout = function getLayout(page) {
-  return (
-    <Layout pageName='Home'>
-      {page}
-    </Layout>
-  )
-}
+  return <Layout pageName="Home">{page}</Layout>;
+};

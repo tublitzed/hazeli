@@ -1,4 +1,4 @@
-import '../assets/global.css';
+import '../styles/base.scss';
 import { Layout } from '../components';
 
 const getLayout = (page) => {

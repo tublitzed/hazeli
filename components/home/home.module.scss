@@ -1,3 +1,5 @@
+@import 'variables.module.scss';
+
 .home {
   display: flex;
   height: 100vh;
@@ -6,9 +8,9 @@
 }
 
 .home a {
-  color: #FFF;
+  color: #fff;
   text-align: center;
-  font-size: 5rem;
+  font-size: 4rem;
   display: flex;
   justify-content: center;
   flex: 50%;
@@ -17,7 +19,7 @@
 }
 
 .home a:hover {
-  color: #ca3cce;
+  color: $color-primary;
 }
 
 .home a.hazel:hover {
