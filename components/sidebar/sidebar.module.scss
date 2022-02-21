@@ -1,3 +1,6 @@
+@import 'helpers/_breakpoints.scss';
+@import 'variables.module.scss';
+
 .sidebar {
   max-width: 250px;
   background: #e6e6e6;
@@ -6,7 +9,26 @@
   padding: 1em;
   text-align: center;
   a {
+    font-size: 0.9em;
     display: block;
     padding: 0.75em;
+    margin-bottom: 3px;
+    text-decoration: none;
+    border-radius: $border-radius;
+  }
+  .active,
+  a:hover {
+    background: $color-primary;
+    color: #fff;
+  }
+}
+
+@media #{$media-sm} {
+  .sidebar {
+    margin-right: 1em;
+    a {
+      padding-left: 0.25em;
+      padding-right: 0.25em;
+    }
   }
 }

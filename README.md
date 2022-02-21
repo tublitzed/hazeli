@@ -4,7 +4,7 @@ For messing around with stuff for kiddos.
 
 ## Setup
 
-* cp `env.example > env.local` and replace values.
+- cp `env.example > env.local` and replace values.
 
 ## Deployment
 

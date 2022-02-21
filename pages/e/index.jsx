@@ -1,7 +1,7 @@
 export default function Index() {
   return (
     <>
-      <h2>Eli&apos;s Stuff Here</h2>
+      <h2>Eli&apos;s Page</h2>
     </>
   );
 }
