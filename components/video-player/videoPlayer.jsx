@@ -5,8 +5,9 @@ import styles from './videoPlayer.module.scss';
 
 export const VIDEO_PLAYER_CONFIG = {
   controls: true,
-  responsive: true,
-  height: 500,
+  // responsive: true,
+  fluid: true,
+  height: 600,
   // breakpoints: {
   //   small: 1500,
   // },
