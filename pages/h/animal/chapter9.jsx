@@ -1,5 +1,5 @@
-import { Layout, VideoPlayer, Sidebar } from '@components';
-import { SIDEBAR_ANIMAL_BOOK } from '@helpers/constants';
+import { VideoPlayer } from '@components';
+import { CustomLayoutAnimalBook } from '@components/layout/layout';
 import { VIDEO_PLAYER_CONFIG } from '@components/video-player/videoPlayer';
 
 export default function Index() {
@@ -20,11 +20,4 @@ export default function Index() {
   );
 }
 
-Index.getLayout = function getLayout(page) {
-  return (
-    <Layout>
-      <Sidebar config={SIDEBAR_ANIMAL_BOOK} />
-      {page}
-    </Layout>
-  );
-};
+Index.getLayout = CustomLayoutAnimalBook;

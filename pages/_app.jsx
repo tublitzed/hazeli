@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-import '../styles/base.scss';
+import '@styles/base.scss';
 import { Layout } from '@components';
 import { Analytics } from '@helpers';
 

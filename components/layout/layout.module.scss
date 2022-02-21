@@ -1,7 +1,12 @@
-.appContent {
+.content {
   padding: 1em;
 }
 
-.Home .appContent {
+// this is a bit gross. TODO: fix me.
+.animalBook .content {
+  display: flex;
+}
+
+.Home .content {
   padding: 0;
 }
