@@ -4,7 +4,6 @@ import styles from './videoPlayer.module.scss';
 
 export default class VideoPlayer extends React.Component {
   render() {
-    console.log(this.props);
     return (
       <div className={styles.videoPlayer}>
         <ReactPlayer
