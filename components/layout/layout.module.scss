@@ -7,6 +7,12 @@
   display: flex;
 }
 
+.contentWithSidebar {
+  flex-grow: 1;
+  // gross hack for video player in animal section:
+  overflow-x: hidden;
+}
+
 .Home .content {
   padding: 0;
 }
