@@ -1,44 +1,18 @@
 import React from 'react';
-import videojs from 'video.js';
-import 'video.js/dist/video-js.css';
+import ReactPlayer from 'react-player';
 import styles from './videoPlayer.module.scss';
 
-export const VIDEO_PLAYER_CONFIG = {
-  controls: true,
-  // responsive: true,
-  fluid: true,
-  height: 600,
-  // breakpoints: {
-  //   small: 1500,
-  // },
-  // fluid: true,
-};
-
 export default class VideoPlayer extends React.Component {
-  componentDidMount() {
-    // instantiate Video.js
-    this.player = videojs(this.videoNode, this.props);
-  }
-
-  // destroy player on unmount
-  componentWillUnmount() {
-    if (this.player) {
-      this.player.dispose();
-    }
-  }
-
-  // wrap the player in a div with a `data-vjs-player` attribute
-  // so videojs won't create additional wrapper in the DOM
-  // see https://github.com/videojs/video.js/pull/3856
   render() {
     return (
       <div className={styles.videoPlayer}>
-        <div data-vjs-player>
-          <video
-            ref={(node) => (this.videoNode = node)}
-            className="video-js"
-          ></video>
-        </div>
+        <ReactPlayer
+          url={this.props.sources[0].src}
+          className={styles.videoPlayerInner}
+          width="100%"
+          height="100%"
+          controls={true}
+        />
       </div>
     );
   }

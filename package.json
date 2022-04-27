@@ -17,8 +17,8 @@
     "next": "12.1.5",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "sass": "1.51.0",
-    "video.js": "7.18.1"
+    "react-player": "^2.10.0",
+    "sass": "1.51.0"
   },
   "devDependencies": {
     "eslint": "8.14.0",

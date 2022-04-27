@@ -7,7 +7,7 @@ export function CustomLayoutAnimalBook(page) {
   return (
     <Layout pageName="animalBook">
       <Sidebar config={SIDEBAR_ANIMAL_BOOK} />
-      <section>{page}</section>
+      <section className={styles.contentWithSidebar}>{page}</section>
     </Layout>
   );
 }

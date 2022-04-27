@@ -1,10 +1,8 @@
 import { VideoPlayer } from '@components';
 import { CustomLayoutAnimalBook } from '@components/layout/layout';
-import { VIDEO_PLAYER_CONFIG } from '@components/video-player/videoPlayer';
 
 export default function Index() {
   const videoJsOptions = {
-    ...VIDEO_PLAYER_CONFIG,
     poster: '/img/animal-book/9.png',
     sources: [
       {
