@@ -6,7 +6,7 @@ import { Layout } from '@components';
 import { Analytics } from '@helpers';
 
 const getLayout = (page) => {
-  return <Layout>{page}</Layout>;
+  return <Layout>{page}</Layout>
 };
 
 export default function MyApp({ Component, pageProps }) {
