@@ -40,7 +40,6 @@
   },
   "homepage": "https://github.com/tublitzed/hazeli#readme",
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,css,md}": "prettier --write",
-    "*.{js,jsx,ts,tsx}": "eslint"
+    "*.{js,jsx,ts,tsx,css,md}": "prettier --write"
   }
 }

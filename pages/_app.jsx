@@ -6,7 +6,7 @@ import { Layout } from '@components';
 import { Analytics } from '@helpers';
 
 const getLayout = (page) => {
-  return <Layout> {page}</Layout>
+  return <Layout> {page}</Layout>;
 };
 
 export default function MyApp({ Component, pageProps }) {
@@ -15,11 +15,6 @@ export default function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     const handleRouteChange = (url) => {
-
-
-
-
-      
       Analytics.pageview(url);
     };
     //When the component is mounted, subscribe to router changes
