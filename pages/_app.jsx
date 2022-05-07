@@ -2,17 +2,11 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import '@styles/base.scss';
-import { Layout, Sidebar } from '@components';
+import { Layout } from '@components';
 import { Analytics } from '@helpers';
 
-// this will break eslint rules as a quick test. TODO: remove me.
-const foo = {
-  "broken": true,
-  "yup": true,
-}
-
 const getLayout = (page) => {
-  return <Layout> {page} </Layout>;
+  return <Layout> {page} </Layout>
 };
 
 export default function MyApp({ Component, pageProps }) {
