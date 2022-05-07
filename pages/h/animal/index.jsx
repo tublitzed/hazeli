@@ -1,4 +1,4 @@
-import { Layout, VideoPlayer } from '@components';
+import { VideoPlayer } from '@components';
 import { CustomLayoutAnimalBook } from '@components/layout/layout';
 import { VIDEO_PLAYER_CONFIG } from '@components/video-player/videoPlayer';
 
