@@ -6,7 +6,8 @@ import { Layout, Sidebar } from '@components';
 import { Analytics } from '@helpers';
 
 const getLayout = (page) => {
-  return <Layout> {pagse} </Layout>;
+  console.log('foo');
+  return <Layout> {page} </Layout>;
 };
 
 export default function MyApp({ Component, pageProps }) {
