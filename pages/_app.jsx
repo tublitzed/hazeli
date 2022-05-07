@@ -5,8 +5,13 @@ import '@styles/base.scss';
 import { Layout, Sidebar } from '@components';
 import { Analytics } from '@helpers';
 
+// this will break eslint rules as a quick test. TODO: remove me.
+const foo = {
+  "broken": true,
+  "yup": true,
+}
+
 const getLayout = (page) => {
-  console.log('foo');
   return <Layout> {page} </Layout>;
 };
 
