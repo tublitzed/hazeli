@@ -11,7 +11,7 @@
     "start": "next start",
     "lint": "next lint",
     "syntax": "npx prettier --write .",
-    "lintfix": "next lint --fix",
+    "lint:write": "next lint --cache --fix",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -40,7 +40,6 @@
   },
   "homepage": "https://github.com/tublitzed/hazeli#readme",
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
     "*.{js,jsx,ts,tsx,css,md}": "prettier --write"
   }
 }
