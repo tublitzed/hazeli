@@ -41,6 +41,6 @@
   "homepage": "https://github.com/tublitzed/hazeli#readme",
   "lint-staged": {
     "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
+    "*.{js,jsx,ts,tsx,css,md}": "prettier --write"
   }
 }
