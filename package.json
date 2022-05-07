@@ -11,7 +11,7 @@
     "start": "next start",
     "lint": "next lint",
     "syntax": "npx prettier --write .",
-    "lint:write": "next lint --cache --fix",
+    "lintfix": "next lint --fix",
     "prepare": "husky install"
   },
   "dependencies": {
