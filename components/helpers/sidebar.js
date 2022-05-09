@@ -13,6 +13,7 @@ const buildChapterBook = (bookRootSlug, numChapters) => {
       url: `${bookRootSlug}chapter${i}`,
     });
   }
+  return chapterBookSidebar;
 };
 export const SIDEBAR_ANIMAL_BOOK = buildChapterBook('h/animal/', 13);
 

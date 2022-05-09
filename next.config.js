@@ -13,9 +13,9 @@ const nextConfig = {
     config.resolve.alias['@components'] = path.resolve(
       path.join(__dirname, 'components')
     );
-    config.resolve.alias['@constants'] = path.resolve(
-      path.join(__dirname, 'components/helpers/constants.js')
-    );
+    // config.resolve.alias['@constants'] = path.resolve(
+    //   path.join(__dirname, 'components/helpers/constants.js')
+    // );
     config.resolve.alias['@helpers'] = path.resolve(
       path.join(__dirname, 'components/helpers')
     );

@@ -8,7 +8,9 @@ export default function Index() {
           <Link href="/h/animal">Animal Book</Link>
         </li>
         <li>
-          <Link href="/h/animal">Hazel&apos;s Animal Sticker Book</Link>
+          <Link href="/h/animal-sticker-book">
+            Hazel&apos;s Animal Sticker Book
+          </Link>
         </li>
       </ul>
     </>
