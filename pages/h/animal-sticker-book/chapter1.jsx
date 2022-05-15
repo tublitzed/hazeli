@@ -1,5 +1,5 @@
 import { VideoPlayer } from '@components';
-import { CustomLayoutAnimalBook } from '@components/layout/layout';
+import { CustomLayoutAnimalStickerBook } from '@components/layout/layout';
 
 export default function Index() {
   const videoJsOptions = {
@@ -13,10 +13,10 @@ export default function Index() {
   };
   return (
     <>
-      <h2>Animal Sticker Book - Chapter 1</h2>
+      <h2>Hazel&apos;s Animal Sticker Book - Chapter 1</h2>
       <VideoPlayer {...videoJsOptions} />
     </>
   );
 }
 
-Index.getLayout = CustomLayoutAnimalBook;
+Index.getLayout = CustomLayoutAnimalStickerBook;

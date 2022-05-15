@@ -5,6 +5,7 @@ import { VIDEO_PLAYER_CONFIG } from '@components/video-player/videoPlayer';
 export default function Index() {
   const videoJsOptions = {
     ...VIDEO_PLAYER_CONFIG,
+    poster: '/img/animal-sticker-book/intro.png',
     sources: [
       {
         src: '/videos/animal-sticker-book/intro.mp4',

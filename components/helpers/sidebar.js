@@ -1,5 +1,5 @@
 const buildChapterBook = (bookRootSlug, numChapters) => {
-  var chapterBookSidebar = {
+  let chapterBookSidebar = {
     pages: [
       {
         name: 'Intro',
@@ -7,17 +7,17 @@ const buildChapterBook = (bookRootSlug, numChapters) => {
       },
     ],
   };
-  for (var i = 1; i <= numChapters; i++) {
+  for (let i = 1; i <= numChapters; i++) {
     chapterBookSidebar.pages.push({
       name: `Chapter ${i}`,
-      url: `${bookRootSlug}chapter${i}`,
+      url: `${bookRootSlug}/chapter${i}`,
     });
   }
   return chapterBookSidebar;
 };
-export const SIDEBAR_ANIMAL_BOOK = buildChapterBook('h/animal/', 13);
+export const SIDEBAR_ANIMAL_BOOK = buildChapterBook('/h/animal', 13);
 
 export const SIDEBAR_ANIMAL_STICKER_BOOK = buildChapterBook(
-  'h/animal-sticker-book/',
-  2
+  '/h/animal-sticker-book',
+  3
 );
