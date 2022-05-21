@@ -12,13 +12,40 @@
 @tailwind utilities;
 
 /* !WHAT!???? */
+/*
+https://coolors.co/41337a-eaeaea-cbc5ea-28965a-2a6041
+*/
 :root {
-  --color-bg: #f4f4f4;
+  /* CSS HEX */
+  --dark-slate-blue: #41337aff;
+  --platinum: #eaeaeaff;
+  --lavender-blue: #cbc5eaff;
+  --spanish-green: #28965aff;
+  --hunter-green: #2a6041ff;
+
+  /* CSS HSL */
+  /* --dark-slate-blue: hsla(252, 41%, 34%, 1);
+--platinum: hsla(0, 0%, 92%, 1);
+--lavender-blue: hsla(250, 47%, 85%, 1);
+--spanish-green: hsla(147, 58%, 37%, 1);
+--hunter-green: hsla(146, 39%, 27%, 1); */
+
+  --color-primary: var(--dark-slate-blue);
+  --color-primary-light: var(--lavender-blue);
+
+  --color-secondary: var(--hunter-green);
+  --color-secondary-light: var(--spanish-green);
+
+  --color-bg: var(--platinum);
 }
 
 body {
   background: var(--color-bg);
-  color: theme('colors.blue.500');
+  color: theme('colors.primary'); /* or, var(--color-primary); */
+}
+
+a {
+  cursor: pointer;
 }
 
 .video-player {
@@ -32,9 +59,7 @@ body {
   top: 0;
   left: 0;
 
-  video {
-    /* // border: 6px solid $color-primary;
-    // border-radius: $border-radius; */
+  /* video {
     background: #000;
-  }
+  } */
 }

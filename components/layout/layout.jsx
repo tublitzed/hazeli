@@ -20,16 +20,18 @@ export function CustomLayoutAnimalStickerBook(page) {
   );
 }
 
-export default function Layout({ children, pageName = '' }) {
-  const classes = ['app', pageName].join(' ');
+export default function Layout({ children, pageName, cssClasses }) {
+  const globalClasses = ['antialiased'].join(' ');
   return (
     <>
       <Head>
         <title>Hazeli</title>
       </Head>
-      <div className={classes}>
-        {pageName !== 'Home' ? <Header /> : ''}
-        <main>{children}</main>
+      <div className={`${globalClasses} ${cssClasses}`}>
+        <div className="container mx-auto">
+          {pageName !== 'Home' ? <Header /> : ''}
+          <main>{children}</main>
+        </div>
       </div>
     </>
   );
