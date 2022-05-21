@@ -1,17 +1,16 @@
 import Link from 'next/link';
 import { Layout } from '@components';
-import styles from './home.module.scss';
 
 export default function Home() {
   return (
-    <div className={styles.home}>
+    <div>
       <Link href="/h">
-        <a className={styles.hazel}>
+        <a>
           <span>Hazel</span>
         </a>
       </Link>
       <Link href="/e">
-        <a className={styles.eli}>
+        <a>
           <span>Eli</span>
         </a>
       </Link>

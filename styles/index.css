@@ -1,0 +1,40 @@
+/* @import "tailwindcss/base";
+@import "./custom-base-styles.css";
+
+@import "tailwindcss/components";
+@import "./custom-components.css";
+
+@import "tailwindcss/utilities";
+@import "./custom-utilities.css"; */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* !WHAT!???? */
+:root {
+  --color-bg: #f4f4f4;
+}
+
+body {
+  background: var(--color-bg);
+  color: theme('colors.blue.500');
+}
+
+.video-player {
+  position: relative;
+  /* https://css-tricks.com/aspect-ratio-boxes/ */
+  padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+}
+
+.video-player-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  video {
+    /* // border: 6px solid $color-primary;
+    // border-radius: $border-radius; */
+    background: #000;
+  }
+}

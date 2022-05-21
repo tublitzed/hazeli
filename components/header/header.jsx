@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import styles from './header.module.scss';
 
 const breadcrumbLink = (path) => {
   const isRootDir = path === '/h' || path === '/e';
@@ -16,10 +15,10 @@ export default function Header() {
   const router = useRouter();
   const path = router.pathname;
   return (
-    <header className={styles.header}>
+    <header>
       <Link href="/">Hazeli</Link>
       {path !== '/' ? (
-        <div className={styles.breadcrumbs}>
+        <div>
           <span>&gt;</span>
           <span>{breadcrumbLink(path)}</span>
         </div>

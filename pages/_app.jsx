@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { Layout } from '@components';
 import { Analytics } from '@helpers';
 
-import '@styles/base.scss';
+import '@styles/index.css';
 
 const getLayout = (page) => {
   return <Layout>{page}</Layout>;

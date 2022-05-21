@@ -6,9 +6,9 @@ const nextConfig = {
   //   // your project has ESLint errors.
   //   ignoreDuringBuilds: true,
   // },
-  sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')],
-  },
+  // sassOptions: {
+  //   includePaths: [path.join(__dirname, 'styles')],
+  // },
   webpack: (config) => {
     config.resolve.alias['@components'] = path.resolve(
       path.join(__dirname, 'components')
