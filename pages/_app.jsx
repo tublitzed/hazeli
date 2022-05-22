@@ -12,7 +12,6 @@ const getLayout = (page) => {
 export default function MyApp({ Component, pageProps }) {
   const layoutType = Component.getLayout || getLayout;
   const router = useRouter();
-  console.log(pageProps);
   useEffect(() => {
     const handleRouteChange = (url) => {
       Analytics.pageview(url);
