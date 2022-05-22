@@ -1,13 +1,12 @@
 import Head from 'next/head';
 import { Header, Sidebar } from '@components';
 import { SIDEBAR_ANIMAL_BOOK, SIDEBAR_ANIMAL_STICKER_BOOK } from '@helpers';
-import styles from './layout.module.scss';
 
 export function CustomLayoutAnimalBook(page) {
   return (
     <Layout pageName="animalBook">
       <Sidebar config={SIDEBAR_ANIMAL_BOOK} />
-      <section className={styles.contentWithSidebar}>{page}</section>
+      <section className="content-with-sidebar">{page}</section>
     </Layout>
   );
 }
@@ -16,21 +15,28 @@ export function CustomLayoutAnimalStickerBook(page) {
   return (
     <Layout pageName="animalStickerBook">
       <Sidebar config={SIDEBAR_ANIMAL_STICKER_BOOK} />
-      <section className={styles.contentWithSidebar}>{page}</section>
+      <section className="content-with-sidebar">{page}</section>
     </Layout>
   );
 }
 
 export default function Layout({ children, pageName = '' }) {
-  const classes = [styles.app, styles[pageName]].join(' ');
+  const rootClasses = ['antialiased', `page--${pageName.toLowerCase()}`].join(
+    ' '
+  );
+  const contentClasses = [
+    'content',
+    pageName !== 'Home' ? 'md:p-6' : '',
+    'p-1',
+  ].join(' ');
   return (
     <>
       <Head>
         <title>Hazeli</title>
       </Head>
-      <div className={classes}>
+      <div className={rootClasses}>
         {pageName !== 'Home' ? <Header /> : ''}
-        <main className={styles.content}>{children}</main>
+        <main className={contentClasses}>{children}</main>
       </div>
     </>
   );

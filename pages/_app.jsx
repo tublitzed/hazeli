@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { Layout } from '@components';
 import { Analytics } from '@helpers';
 
-import '@styles/base.scss';
+import '@styles/index.css';
 
 const getLayout = (page) => {
   return <Layout>{page}</Layout>;
@@ -12,7 +12,6 @@ const getLayout = (page) => {
 export default function MyApp({ Component, pageProps }) {
   const layoutType = Component.getLayout || getLayout;
   const router = useRouter();
-
   useEffect(() => {
     const handleRouteChange = (url) => {
       Analytics.pageview(url);

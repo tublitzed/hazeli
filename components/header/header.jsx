@@ -1,6 +1,11 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import styles from './header.module.scss';
+
+const headerLinkClasses = [
+  'text-light',
+  'hover:text-primary-light',
+  'no-underline',
+].join(' ');
 
 const breadcrumbLink = (path) => {
   const isRootDir = path === '/h' || path === '/e';
@@ -9,17 +14,32 @@ const breadcrumbLink = (path) => {
   if (isRootDir) {
     return pageName;
   }
-  return <Link href={isHazelSection ? '/h' : '/e'}>{pageName}</Link>;
+  return (
+    <Link href={isHazelSection ? '/h' : '/e'}>
+      <a className={headerLinkClasses}>{pageName}</a>
+    </Link>
+  );
 };
 
 export default function Header() {
   const router = useRouter();
   const path = router.pathname;
+  const hasBreadcrumbs = path !== '/';
+  const headerClasses = [
+    'bg-primary',
+    'text-light',
+    'text-xl',
+    'font-bold',
+    'tracking-wide',
+    'p-6',
+  ].join(' ');
   return (
-    <header className={styles.header}>
-      <Link href="/">Hazeli</Link>
-      {path !== '/' ? (
-        <div className={styles.breadcrumbs}>
+    <header className={headerClasses}>
+      <Link href="/">
+        <a className={headerLinkClasses}>Hazeli</a>
+      </Link>
+      {hasBreadcrumbs ? (
+        <div className="breadcrumbs font-light">
           <span>&gt;</span>
           <span>{breadcrumbLink(path)}</span>
         </div>
