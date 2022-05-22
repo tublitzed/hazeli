@@ -5,14 +5,14 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "debug": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
-    "start": "next start",
+    "debug": "NODE_OPTIONS='--inspect' next dev",
+    "dev": "next dev",
+    "format": "npx prettier --write .",
     "lint": "next lint",
-    "syntax": "npx prettier --write .",
     "lintfix": "next lint --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "start": "next start"
   },
   "dependencies": {
     "next": "12.1.5",

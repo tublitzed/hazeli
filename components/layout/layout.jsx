@@ -27,8 +27,8 @@ export default function Layout({ children, pageName, cssClasses }) {
       <Head>
         <title>Hazeli</title>
       </Head>
-      <div className={`${globalClasses} ${cssClasses}`}>
-        <div className="container mx-auto">
+      <div className={pageName ? `page--${pageName.toLowerCase()}` : ''}>
+        <div className={`${globalClasses} ${cssClasses}`}>
           {pageName !== 'Home' ? <Header /> : ''}
           <main>{children}</main>
         </div>

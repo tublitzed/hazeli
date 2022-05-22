@@ -63,3 +63,8 @@ a {
     background: #000;
   } */
 }
+
+.page--home {
+  background: url('/img/bg/ft_fisher.png') no-repeat;
+  background-size: cover;
+}
