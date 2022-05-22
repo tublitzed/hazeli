@@ -39,32 +39,101 @@ https://coolors.co/41337a-eaeaea-cbc5ea-28965a-2a6041
   --color-bg: var(--platinum);
 }
 
-body {
-  background: var(--color-bg);
-  color: theme('colors.primary'); /* or, var(--color-primary); */
-}
+@layer base {
+  body {
+    background: var(--color-bg);
+    color: theme('colors.primary');
+    /* or, var(--color-primary); */
+    @apply text-base;
+  }
 
-a {
-  cursor: pointer;
+  h2 {
+    @apply font-bold;
+    @apply text-lg;
+    @apply border-b-2;
+    @apply border-primary-light;
+    @apply p-2;
+    @apply pl-0;
+    @apply mb-6;
+  }
+
+  a {
+    cursor: pointer;
+    text-decoration: underline;
+    @apply text-primary;
+    @apply hover:text-secondary;
+  }
 }
 
 .video-player {
   position: relative;
   /* https://css-tricks.com/aspect-ratio-boxes/ */
-  padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+  padding-top: 56.25%;
+  /* Player ratio: 100 / (1280 / 720) */
 }
 
 .video-player-inner {
+  border: 12px solid var(--color-primary-light);
+
+  /* mimic shadow-sm: */
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  border-radius: 0.25rem;
   position: absolute;
   top: 0;
   left: 0;
-
-  /* video {
-    background: #000;
-  } */
+}
+.video-player-inner video {
+  background: var(--color-primary-light);
 }
 
 .page--home {
   background: url('/img/bg/ft_fisher.png') no-repeat;
   background-size: cover;
+}
+
+.breadcrumbs {
+  display: inline-block;
+}
+
+.breadcrumbs span {
+  margin: 0 3px 0 6px;
+}
+
+.page--animalstickerbook .content,
+.page--animalbook .content {
+  display: flex;
+}
+
+.sidebar a {
+  display: block;
+}
+
+.content-with-sidebar {
+  flex-grow: 1;
+}
+.sidebar a .short {
+  display: none;
+}
+
+/* TODO: proper breakpoints */
+/* match tailwind's 'sm' at 640px */
+@media screen and (max-width: 640px) {
+  /* .page--animalstickerbook .content,
+  .page--animalbook .content {
+    display: block;
+  } */
+
+  /* .content-with-sidebar {
+    flex-grow: 1;
+  } */
+
+  .sidebar a .short {
+    display: block;
+  }
+  .sidebar a .main {
+    display: none;
+  }
 }

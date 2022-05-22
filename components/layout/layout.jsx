@@ -20,18 +20,23 @@ export function CustomLayoutAnimalStickerBook(page) {
   );
 }
 
-export default function Layout({ children, pageName, cssClasses }) {
-  const globalClasses = ['antialiased'].join(' ');
+export default function Layout({ children, pageName = '' }) {
+  const rootClasses = ['antialiased', `page--${pageName.toLowerCase()}`].join(
+    ' '
+  );
+  const contentClasses = [
+    'content',
+    pageName !== 'Home' ? 'md:p-6' : '',
+    'p-1',
+  ].join(' ');
   return (
     <>
       <Head>
         <title>Hazeli</title>
       </Head>
-      <div className={pageName ? `page--${pageName.toLowerCase()}` : ''}>
-        <div className={`${globalClasses} ${cssClasses}`}>
-          {pageName !== 'Home' ? <Header /> : ''}
-          <main>{children}</main>
-        </div>
+      <div className={rootClasses}>
+        {pageName !== 'Home' ? <Header /> : ''}
+        <main className={contentClasses}>{children}</main>
       </div>
     </>
   );

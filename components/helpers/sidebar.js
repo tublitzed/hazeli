@@ -4,12 +4,14 @@ const buildChapterBook = (bookRootSlug, numChapters) => {
       {
         name: 'Intro',
         url: bookRootSlug,
+        shortName: 'Intro',
       },
     ],
   };
   for (let i = 1; i <= numChapters; i++) {
     chapterBookSidebar.pages.push({
       name: `Chapter ${i}`,
+      shortName: i,
       url: `${bookRootSlug}/chapter${i}`,
     });
   }
