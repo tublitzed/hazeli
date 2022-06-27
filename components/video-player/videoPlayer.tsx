@@ -2,6 +2,10 @@ import React from 'react'
 import ReactPlayer from 'react-player'
 // import styles from './videoPlayer.module.scss';
 
+export const VIDEO_PLAYER_CONFIG = {
+  // anything that should be used for all vids.
+}
+
 type Source = {
   src: string;
   type: string;

@@ -2,12 +2,6 @@ import Link from 'next/link'
 import { useRouter, NextRouter } from 'next/router'
 import { isHazelSection } from '@helpers'
 
-const headerLinkClasses = [
-  'text-light',
-  'hover:text-primary-light',
-  'no-underline',
-].join(' ')
-
 const breadcrumbLink = (router: NextRouter) => {
   const path = router.pathname
   const isRootDir = path === '/h' || path === '/e'
@@ -18,11 +12,20 @@ const breadcrumbLink = (router: NextRouter) => {
   }
   return (
     <Link href={hazelSection ? '/h' : '/e'}>
-      <a className={headerLinkClasses}>{pageName}</a>
+      <a className={headerLinkClasses(router)}>{pageName}</a>
     </Link>
   )
 }
 
+const headerLinkClasses = (router: NextRouter) => {
+  return [
+    'text-light',
+    isHazelSection(router)
+      ? 'hover:text-primary-light'
+      : 'hover:text-secondary-light',
+    'no-underline',
+  ].join(' ')
+}
 export default function Header() {
   const router = useRouter()
   const path = router.pathname
@@ -33,12 +36,12 @@ export default function Header() {
     'font-bold',
     'tracking-wide',
     'p-6',
-  ]
-  headerClasses.push(isHazelSection(router) ? 'bg-primary' : 'bg-secondary')
+    isHazelSection(router) ? 'bg-primary' : 'bg-secondary',
+  ].join(' ')
   return (
-    <header className={headerClasses.join(' ')}>
+    <header className={headerClasses}>
       <Link href="/">
-        <a className={headerLinkClasses}>Hazeli</a>
+        <a className={headerLinkClasses(router)}>Hazeli</a>
       </Link>
       {hasBreadcrumbs
         ? (

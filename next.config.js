@@ -11,7 +11,7 @@ const nextConfig = {
   // sassOptions: {
   //   includePaths: [path.join(__dirname, 'styles')],
   // },
-  webpack: (config: any) => {
+  webpack: (config) => {
     // config.resolve.alias['@components'] = path.resolve(
     //   path.join(__dirname, 'components')
     // );

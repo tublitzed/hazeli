@@ -11,7 +11,7 @@ export type SidebarConfig = {
 const buildChapterBook = (
   bookRootSlug: string,
   numChapters: number,
-): Sidebar => {
+): SidebarConfig => {
   const chapterBookSidebar = {
     pages: [
       {

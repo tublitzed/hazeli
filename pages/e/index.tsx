@@ -1,7 +1,8 @@
+import { PageTitle } from '@components'
 export default function Index() {
   return (
     <div className="text-secondary">
-      <h2>Eli&apos;s Page</h2>
+      <PageTitle>Eli&apos;s Page</PageTitle>
       <p>Coming Soon :)</p>
     </div>
   )

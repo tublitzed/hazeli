@@ -23,36 +23,12 @@ https://coolors.co/41337a-eaeaea-cbc5ea-28965a-2a6041
 }
 
 @layer base {
-  body {
-    background: var(--color-bg);
-    color: theme('colors.primary');
-    /* or, var(--color-primary); */
-    @apply text-base;
+  .section--eli {
+    color: theme('colors.secondary-dark');
   }
 
-  h2 {
-    @apply font-bold;
-    @apply text-lg;
-    @apply border-b-2;
-    @apply p-2;
-    @apply pl-0;
-    @apply mb-6;
-  }
-
-  .section--eli h2 {
-    /* TODO: THIS COLOR LOOKS THE SAME AS THE MAIN SECONDARY COLOR */
-    @apply border-secondary-light;
-  }
-
-  .section--hazel h2 {
-    @apply border-primary-light;
-  }
-
-  a {
-    cursor: pointer;
-    text-decoration: underline;
-    @apply text-primary;
-    @apply hover:text-secondary;
+  .section--hazel {
+    color: theme('colors.primary-dark');
   }
 }
 

@@ -1,3 +1,4 @@
+import { PageTitle } from '@components'
 import { CustomLayoutAnimalStickerBook } from '@components/layout/layout'
 
 export default function Index() {
@@ -12,7 +13,7 @@ export default function Index() {
   // };
   return (
     <>
-      <h2>The Bear Show</h2>
+      <PageTitle>The Bear Show</PageTitle>
       <p>Coming Soon</p>
     </>
   )

@@ -1,4 +1,4 @@
-import { VideoPlayer } from '@components'
+import { VideoPlayer, PageTitle } from '@components'
 import { CustomLayoutAnimalStickerBook } from '@components/layout/layout'
 
 export default function Index() {
@@ -13,7 +13,7 @@ export default function Index() {
   }
   return (
     <>
-      <h2>Hazel&apos;s Animal Sticker Book - Chapter 1</h2>
+      <PageTitle>Hazel&apos;s Animal Sticker Book - Chapter 1</PageTitle>
       <VideoPlayer {...videoJsOptions} />
     </>
   )

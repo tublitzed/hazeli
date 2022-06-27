@@ -4,26 +4,27 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    /*
-  --dark-slate-blue: #41337aff;
-  --platinum: #eaeaeaff;
-  --lavender-blue: #cbc5eaff;
-  --spanish-green: #28965aff;
-  --hunter-green: #2a6041ff;
-*/
     colors: {
-      primary: '#41337aff',
-      'primary-light': '#cbc5eaff',
-      secondary: '#2a6041ff',
-      'secondary-light': '#2a6041ff',
-      light: '#eaeaeaff',
+      'primary-dark': '#2E2456',
+      primary: '#41337A',
+      'primary-light': '#CBC5EA',
+      'secondary-dark': '#244231',
+      secondary: '#2A6041',
+      'secondary-light': '#28965A',
+      light: '#EAEAEA',
       'gray-dark': '#273444',
       gray: '#8492a6',
       'gray-light': '#d3dce6',
     },
     fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
-      serif: ['Merriweather', 'serif'],
+      sans: [
+        'Graphik',
+        'sans-serif',
+      ],
+      serif: [
+        'Merriweather',
+        'serif',
+      ],
     },
     extend: {
       spacing: {
@@ -36,4 +37,4 @@ module.exports = {
     },
   },
   plugins: [],
-};
+}

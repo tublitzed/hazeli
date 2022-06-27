@@ -1,4 +1,4 @@
-import { VideoPlayer } from '@components'
+import { VideoPlayer, PageTitle } from '@components'
 import { CustomLayoutAnimalBook } from '@components/layout/layout'
 import { VIDEO_PLAYER_CONFIG } from '@components/video-player/videoPlayer'
 
@@ -14,7 +14,7 @@ export default function Index() {
   }
   return (
     <>
-      <h2>Animal Book</h2>
+      <PageTitle>Animal Book</PageTitle>
       <VideoPlayer {...videoJsOptions} />
     </>
   )
