@@ -34,10 +34,18 @@ https://coolors.co/41337a-eaeaea-cbc5ea-28965a-2a6041
     @apply font-bold;
     @apply text-lg;
     @apply border-b-2;
-    @apply border-primary-light;
     @apply p-2;
     @apply pl-0;
     @apply mb-6;
+  }
+
+  .section--eli h2 {
+    /* TODO: THIS COLOR LOOKS THE SAME AS THE MAIN SECONDARY COLOR */
+    @apply border-secondary-light;
+  }
+
+  .section--hazel h2 {
+    @apply border-primary-light;
   }
 
   a {
