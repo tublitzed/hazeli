@@ -1,6 +1,11 @@
 import { ExtraLayoutProps } from '@components/layout';
 
-export type LinkType = 'ARROW_NEXT' | 'ARROW_PREV' | 'PAGE';
+export type LinkType =
+  | 'ARROW_NEXT'
+  | 'ARROW_PREV'
+  | 'PAGE'
+  | 'LINK_NEXT_PAGE'
+  | 'LINK_PREV_PAGE';
 
 export interface GenerateLinkArgs {
   linkType: LinkType;
