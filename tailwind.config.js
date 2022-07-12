@@ -4,22 +4,22 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    /*
-  --dark-slate-blue: #41337aff;
-  --platinum: #eaeaeaff;
-  --lavender-blue: #cbc5eaff;
-  --spanish-green: #28965aff;
-  --hunter-green: #2a6041ff;
-*/
     colors: {
-      primary: '#41337aff',
-      'primary-light': '#cbc5eaff',
-      secondary: '#2a6041ff',
-      'secondary-light': '#2a6041ff',
-      light: '#eaeaeaff',
-      'gray-dark': '#273444',
-      gray: '#8492a6',
-      'gray-light': '#d3dce6',
+      // https://coolors.co/232323-393939-636363-8e8e8e-d5d5d5-f6f6f6
+      'primary-dark': '#2E2456',
+      primary: '#41337A',
+      'primary-light': '#CBC5EA',
+      'secondary-dark': '#244231',
+      secondary: '#2A6041',
+      'secondary-light': '#28965A',
+      light: '#EAEAEA',
+      'gray-700': '#232323',
+      'gray-500': '#393939',
+      gray: '#636363',
+      'gray-300': '#8E8E8E',
+      'gray-100': '#D5D5D5',
+      'gray-50': '#F6F6F6',
+      white: '#FFF',
     },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],

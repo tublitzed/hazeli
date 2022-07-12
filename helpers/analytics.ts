@@ -1,0 +1,24 @@
+const Analytics = {
+  pageview(url: string) {
+    // @ts-ignore
+    if (typeof window?.gtag !== 'function') {
+      return;
+    }
+    // @ts-ignore
+    window?.gtag('config', process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS, {
+      page_path: url,
+    });
+  },
+
+  // @ts-ignore
+  event({ action, params }) {
+    // @ts-ignore
+    if (typeof window.gtag !== 'function') {
+      return;
+    }
+    // @ts-ignore
+    window.gtag('event', action, params);
+  },
+};
+
+export default Analytics;
