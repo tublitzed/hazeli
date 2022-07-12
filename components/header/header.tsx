@@ -1,0 +1,60 @@
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { isHazelSection } from '@helpers';
+
+const headerLinkClasses = () => {
+  return ['text-light', 'hover:text-white', 'no-underline'].join(' ');
+};
+
+export default function Header() {
+  const router = useRouter();
+  const headerClasses = [
+    'drop-shadow-md',
+    'flex items-center place-content-center md:place-content-start',
+    'text-light',
+    'text-xl',
+    'font-bold',
+    'tracking-wide',
+    'p-6',
+    isHazelSection(router)
+      ? 'bg-gradient-to-r from-primary to-primary-dark'
+      : 'bg-gradient-to-r from-secondary to-secondary-dark',
+  ].join(' ');
+  return (
+    <header className={headerClasses}>
+      <Link href="/">
+        <a>
+          <div className="bg-white p-3 rounded-full mr-4">
+            <div className="h-6 w-6">
+              <svg
+                width="100%"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 532.15 514.25"
+              >
+                <path
+                  fill="#41337a"
+                  d="M214,173.04c-10.64-27.44-37.52-46.48-67.2-46.48h-40.32c-29.68,0-56.56,18.48-67.2,46.48L1.76,271.04c-5.04,12.32,1.12,26.32,14,30.8,12.32,5.04,26.32-1.68,30.8-14l26.32-69.44-.56,79.52-24.64,184.8c-2.24,15.12,8.4,29.12,24.08,31.36h3.92c14,0,25.76-10.08,27.44-24.08l23.52-174.72,23.52,174.72c2.24,15.12,16.24,25.76,31.36,24.08,15.12-2.24,25.76-16.24,24.08-31.36l-24.64-184.24-.56-79.52,26.32,69.44c3.92,9.52,12.88,15.68,22.4,15.68,2.8,0,5.6-.56,8.4-1.68,12.32-4.48,18.48-18.48,14-30.8l-37.52-98.56Z"
+                />
+                <path
+                  fill="#41337a"
+                  d="M182.08,55.44c0,30.62-24.82,55.44-55.44,55.44s-55.44-24.82-55.44-55.44S96.02,0,126.64,0s55.44,24.82,55.44,55.44"
+                />
+                <path
+                  fill="#2a6041"
+                  d="M530.4,271.04l-37.52-98c-10.64-27.44-37.52-46.48-67.2-46.48h-40.32c-29.68,0-56.56,18.48-67.2,46.48l-37.52,98c-4.48,12.32,1.68,26.32,14,30.8,12.32,5.04,26.32-1.68,30.8-14l26.32-69.44-.56,79.52-24.64,184.24c-2.24,15.12,8.4,29.12,24.08,31.36h3.92c14,0,25.76-10.08,27.44-24.08l23.52-174.72,23.52,174.72c2.24,15.12,16.24,25.76,31.36,24.08,15.12-2.24,25.76-16.24,24.08-31.36l-24.64-184.24-.56-79.52,26.32,69.44c3.92,9.52,12.88,15.68,22.4,15.68,2.8,0,5.6-.56,8.4-1.68,12.88-4.48,19.04-18.48,14-30.8h0Z"
+                />
+                <path
+                  fill="#2a6041"
+                  d="M460.96,55.44c0,30.62-24.82,55.44-55.44,55.44s-55.44-24.82-55.44-55.44S374.9,0,405.52,0s55.44,24.82,55.44,55.44"
+                />
+              </svg>
+            </div>
+          </div>
+        </a>
+      </Link>
+      <Link href="/">
+        <a className={headerLinkClasses()}>Hazeli</a>
+      </Link>
+    </header>
+  );
+}
