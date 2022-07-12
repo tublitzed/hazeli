@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { ExtraLayoutProps } from '@components/layout';
-import { Button, Icon } from '@components';
+import { Button, Icon, Collection } from '@components';
 import { useRouter } from 'next/router';
-import { isHazelSection } from '@helpers';
+import { isHazelSection, getCollectionItem } from '@helpers';
 import {
   GenerateLinkArgs,
   PageNameArgs,
@@ -13,24 +13,22 @@ import {
 
 const MAX_PAGE_BUTTONS = 8;
 
-const getLinkPrefx = (
+const getLinkPrefix = (
   collectionType: ExtraLayoutProps['collectionType']
 ): string => {
-  if (collectionType === 'ANIMAL_BOOK') {
-    return '/h/animal';
-  } else if (collectionType === 'ANIMAL_STICKER_BOOK') {
-    return '/h/animal-sticker-book';
-  }
-  return '/h/bear-show';
+  return getCollectionItem(collectionType)?.url || '';
 };
 
 const getLinkItemTypeString = (
   collectionType: ExtraLayoutProps['collectionType']
 ): string => {
-  if (collectionType === 'BEAR_SHOW') {
-    return 'episode';
+  if (
+    collectionType === 'ANIMAL_BOOK' ||
+    collectionType === 'ANIMAL_STICKER_BOOK'
+  ) {
+    return 'chapter';
   }
-  return 'chapter';
+  return 'episode';
 };
 
 const generateLinkZeroIndexedCollections = ({
@@ -39,7 +37,7 @@ const generateLinkZeroIndexedCollections = ({
   pageCount,
   collectionType,
 }: GenerateLinkArgs): string => {
-  const prefix = getLinkPrefx(collectionType);
+  const prefix = getLinkPrefix(collectionType);
   const typeStr = getLinkItemTypeString(collectionType);
   let targetIndex = pageIndex === 0 ? null : pageIndex;
   if (linkType === 'ARROW_NEXT') {
@@ -53,6 +51,13 @@ const generateLinkZeroIndexedCollections = ({
       : `${prefix}/${targetIndex ? typeStr : ''}${
           targetIndex ? targetIndex.toString() : ''
         }`;
+  } else if (linkType === 'LINK_NEXT_PAGE' || linkType === 'LINK_PREV_PAGE') {
+    const currentPage = getCurrentPage(pageIndex + 1);
+    const targetPage =
+      linkType === 'LINK_NEXT_PAGE'
+        ? MAX_PAGE_BUTTONS * currentPage + 1
+        : MAX_PAGE_BUTTONS * (currentPage - 1);
+    return `${prefix}/${typeStr}${(targetPage - 1).toString()}`;
   }
   return `${prefix}/${targetIndex ? typeStr : ''}${
     targetIndex ? targetIndex.toString() : ''
@@ -65,10 +70,7 @@ export const generateLink = ({
   pageIndex,
   pageCount,
 }: GenerateLinkArgs): string => {
-  if (
-    collectionType === 'ANIMAL_BOOK' ||
-    collectionType === 'ANIMAL_STICKER_BOOK'
-  ) {
+  if (Collection.hasIntro(collectionType)) {
     return generateLinkZeroIndexedCollections({
       linkType,
       pageIndex,
@@ -76,7 +78,8 @@ export const generateLink = ({
       collectionType,
     });
   }
-  const prefix = getLinkPrefx(collectionType);
+
+  const prefix = getLinkPrefix(collectionType);
   const typeStr = getLinkItemTypeString(collectionType);
 
   if (linkType === 'ARROW_NEXT') {
@@ -85,15 +88,22 @@ export const generateLink = ({
       : `${prefix}/${typeStr}${(pageIndex + 1).toString()}`;
   } else if (linkType === 'ARROW_PREV') {
     return pageIndex === 1 ? '#' : `${prefix}/${typeStr}${pageIndex - 1}`;
+  } else if (linkType === 'LINK_NEXT_PAGE' || linkType === 'LINK_PREV_PAGE') {
+    const currentPage = getCurrentPage(pageIndex);
+    const targetPage =
+      linkType === 'LINK_NEXT_PAGE'
+        ? MAX_PAGE_BUTTONS * currentPage + 1
+        : MAX_PAGE_BUTTONS * (currentPage - 1);
+    return `${prefix}/${typeStr}${targetPage.toString()}`;
   }
   return `${prefix}/${typeStr}${(pageIndex + 1).toString()}`;
 };
 
 const pageName = ({ pageIndex, collectionType }: PageNameArgs): string => {
-  if (collectionType === 'BEAR_SHOW') {
-    return (pageIndex + 1).toString();
+  if (Collection.hasIntro(collectionType)) {
+    return pageIndex === 0 ? 'Intro' : pageIndex.toString();
   }
-  return pageIndex === 0 ? 'Intro' : pageIndex.toString();
+  return (pageIndex + 1).toString();
 };
 
 const isDisabled = ({
@@ -102,12 +112,11 @@ const isDisabled = ({
   current,
   pageCount,
 }: IsDisabledArgs) => {
+  const hasIntro = Collection.hasIntro(collectionType);
   if (linkType === 'ARROW_PREV') {
-    return collectionType === 'BEAR_SHOW' ? current === 1 : current === 0;
+    return hasIntro ? current === 0 : current === 1;
   } else if (linkType === 'ARROW_NEXT') {
-    return collectionType === 'BEAR_SHOW'
-      ? current === pageCount
-      : current + 1 === pageCount;
+    return hasIntro ? current + 1 === pageCount : current === pageCount;
   }
   return false; // PAGE
 };
@@ -140,36 +149,49 @@ const getButtonClasses = ({
   );
 };
 
-const showPageBtn = (
+type PageLinkType = 'PAGE_BTN' | 'LINK_PREV_PAGE' | 'LINK_NEXT_PAGE' | 'SKIP';
+
+const getCurrentPage = (current: number): number => {
+  // dumbest thing ever. TM
+  if (current <= MAX_PAGE_BUTTONS) {
+    return 1;
+  } else if (current < MAX_PAGE_BUTTONS * 2) {
+    return 2;
+  } else if (current < MAX_PAGE_BUTTONS * 3) {
+    return 3;
+  }
+  return 4;
+};
+
+const getPageLinkType = (
   current: number,
   pageIndex: number,
-  pageCount: number
-): boolean => {
-  // Assume 0 based index.
-  if (current === pageIndex) {
-    return true;
+  pageCount: number,
+  collectionType: ExtraLayoutProps['collectionType']
+): PageLinkType => {
+  if (pageCount < MAX_PAGE_BUTTONS) {
+    return 'PAGE_BTN';
   }
 
-  // always show the last 2 items
-  if (pageCount - pageIndex <= 2) {
-    return true;
-  }
-
-  // always show the first 2 items
-  if (pageIndex <= 1) {
-    return true;
-  }
-
-  for (let i = 1; i <= 1; i++) {
-    if (current + i === pageIndex) {
-      return true;
+  // This is terrible. Clean up when time.
+  const hasIntro = Collection.hasIntro(collectionType);
+  const currentPage = getCurrentPage(hasIntro ? current + 1 : current);
+  if (currentPage === 1) {
+    if (pageIndex < MAX_PAGE_BUTTONS) {
+      return 'PAGE_BTN';
     }
-    if (current - i === pageIndex) {
-      return true;
+    if (pageIndex === MAX_PAGE_BUTTONS) {
+      return 'LINK_NEXT_PAGE';
+    }
+  } else if (currentPage === 2) {
+    if (pageIndex === MAX_PAGE_BUTTONS - 1) {
+      return 'LINK_PREV_PAGE';
+    }
+    if (pageIndex >= MAX_PAGE_BUTTONS && pageIndex < MAX_PAGE_BUTTONS * 2) {
+      return 'PAGE_BTN';
     }
   }
-
-  return false;
+  return 'SKIP';
 };
 
 export default function Pagination({
@@ -178,9 +200,8 @@ export default function Pagination({
   className,
   collectionType,
 }: ComponentProps) {
+  const hasIntro = Collection.hasIntro(collectionType);
   const isHazel = isHazelSection(useRouter());
-  const needToCollapsePageBtns = pageCount > MAX_PAGE_BUTTONS;
-  let hasShownSkip = false;
   return (
     <nav
       className={clsx(
@@ -188,7 +209,7 @@ export default function Pagination({
         className
       )}
     >
-      <section className="-mt-px w-0 flex-1 flex">
+      <section className="-mt-px flex-1 flex">
         <Button
           className={getButtonClasses({
             linkType: 'ARROW_PREV',
@@ -224,51 +245,65 @@ export default function Pagination({
       <section className="hidden md:-mt-px md:flex">
         {Array.from(Array(pageCount).keys()).map((pageIndex) => {
           const pageNumber = pageIndex + 1;
-          let showBtn = true;
-          if (needToCollapsePageBtns) {
-            showBtn = showPageBtn(current, pageIndex, pageCount);
-          }
-          if (!showBtn) {
-            const contentToRender = hasShownSkip ? null : (
-              <div
-                key={`divider_${pageNumber}`}
-                className="px-2 inline-flex items-center text-base text-gray"
+          const pageLinkType = getPageLinkType(
+            current,
+            pageIndex,
+            pageCount,
+            collectionType
+          );
+          if (pageLinkType === 'PAGE_BTN') {
+            return (
+              <Button
+                key={`paginationButton__p${pageIndex}_${current}`}
+                className={getButtonClasses({
+                  disabled: false,
+                  isActivePage: hasIntro
+                    ? current === pageIndex
+                    : current === pageNumber,
+                  isHazelSection: isHazel,
+                  linkType: 'PAGE',
+                })}
+                clearDefaultCss={true}
+                href={generateLink({
+                  collectionType,
+                  linkType: 'PAGE',
+                  pageCount,
+                  pageIndex,
+                })}
+              >
+                {pageName({
+                  pageIndex,
+                  collectionType,
+                })}
+              </Button>
+            );
+          } else if (
+            pageLinkType === 'LINK_NEXT_PAGE' ||
+            pageLinkType === 'LINK_PREV_PAGE'
+          ) {
+            return (
+              <Button
+                key={`paginationButton__${pageLinkType}`}
+                className={
+                  'px-2 text-2xl text-gray leading-none hover:bg-primary-light/25 active:bg-primary-light/75'
+                }
+                clearDefaultCss={true}
+                href={generateLink({
+                  linkType: pageLinkType,
+                  collectionType,
+                  pageCount,
+                  pageIndex: current,
+                })}
               >
                 ...
-              </div>
+              </Button>
             );
-            hasShownSkip = true;
-            return contentToRender;
           }
-          return (
-            <Button
-              key={`paginationButton__p${pageIndex}_${current}`}
-              className={getButtonClasses({
-                disabled: false,
-                isActivePage:
-                  collectionType === 'BEAR_SHOW'
-                    ? current === pageNumber
-                    : current === pageIndex,
-                isHazelSection: isHazel,
-                linkType: 'PAGE',
-              })}
-              clearDefaultCss={true}
-              href={generateLink({
-                collectionType,
-                linkType: 'PAGE',
-                pageCount,
-                pageIndex,
-              })}
-            >
-              {pageName({
-                pageIndex,
-                collectionType,
-              })}
-            </Button>
-          );
+          // pageLinkType === 'SKIP
+          return null;
         })}
       </section>
-      <section className="-mt-px w-0 flex-1 flex justify-end">
+      <section className="-mt-px flex-1 flex justify-end">
         <Button
           className={getButtonClasses({
             linkType: 'ARROW_NEXT',

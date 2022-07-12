@@ -3,19 +3,26 @@ import { ExtraLayoutProps as Props } from '@components/layout/layout';
 import { VideoPlayer, PageTitle, Pagination, Sidebar } from '@components';
 import { S3_BUCKET_PREFIX } from '@constants';
 import { SIDEBAR_ALL_BOOKS } from '@components/sidebar/helpers';
+import { getCollectionItem } from '@helpers';
 
 interface CollectionProps {
   collectionType: Props['collectionType'];
   collectionItem: Props['collectionItem'];
 }
+
 class Collection extends React.Component<CollectionProps> {
+  static hasIntro(collectionType: Props['collectionType']): boolean {
+    return (
+      collectionType === 'ANIMAL_BOOK' ||
+      collectionType === 'ANIMAL_STICKER_BOOK'
+    );
+  }
+
   get titleComponents(): string[] {
     const { collectionItem, collectionType } = this.props;
-    const title =
-      SIDEBAR_ALL_BOOKS.pages.find((p) => p.collectionType === collectionType)
-        ?.name || '';
+    const title = getCollectionItem(collectionType)?.name || '';
 
-    if (this.hasIntro) {
+    if (Collection.hasIntro(collectionType)) {
       return [
         title,
         collectionItem === 0 ? 'Intro' : `Chapter ${collectionItem}`,
@@ -25,28 +32,15 @@ class Collection extends React.Component<CollectionProps> {
     return [title, `Episode ${collectionItem}`];
   }
 
-  get hasIntro(): boolean {
-    const { collectionType } = this.props;
-    return (
-      collectionType === 'ANIMAL_BOOK' ||
-      collectionType === 'ANIMAL_STICKER_BOOK'
-    );
-  }
-
   get collectionTotal(): number {
     const { collectionType } = this.props;
-    return (
-      SIDEBAR_ALL_BOOKS.pages.find((p) => p.collectionType === collectionType)
-        ?.count || 0
-    );
+    return getCollectionItem(collectionType)?.count || 0;
   }
 
   get src() {
     const { collectionType, collectionItem } = this.props;
-    const prefix = SIDEBAR_ALL_BOOKS.pages.find(
-      (p) => p.collectionType === collectionType
-    )?.srcPrefix;
-    if (this.hasIntro) {
+    const prefix = getCollectionItem(collectionType)?.srcPrefix;
+    if (Collection.hasIntro(collectionType)) {
       return `${S3_BUCKET_PREFIX}${prefix}/${
         collectionItem === 0 ? 'intro' : collectionItem
       }.mp4`;
@@ -55,6 +49,8 @@ class Collection extends React.Component<CollectionProps> {
   }
 
   get poster() {
+    // TODO
+    return '';
     const { collectionType, collectionItem } = this.props;
     if (collectionType === 'BEAR_SHOW') {
       return `/img/bear-show/${collectionItem}.png`;
