@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { ExtraLayoutProps } from '@components/layout';
 import { Icon } from '@components';
-import { isHazelSection } from '@helpers';
 import { SidebarConfig, SidebarPage } from './helpers';
 
 interface SidebarProps {
@@ -27,7 +26,9 @@ const showCurrentNumber = (
 export default function Sidebar({ config, layoutProps }: SidebarProps) {
   const router = useRouter();
   const path = router.pathname;
-  const accentColorString = isHazelSection(router) ? 'primary' : 'secondary';
+  // TODO: this doesn't quite seem to work with template strings passed to clsx. If ever
+  // needed for secondary scheme, need to fix.
+  // const accentColorString = isHazelSection(router) ? 'primary' : 'secondary';
   return (
     <nav
       className="md:pr-4 space-y-4 min-w-[250px] md:max-w-[300px]"
@@ -47,9 +48,9 @@ export default function Sidebar({ config, layoutProps }: SidebarProps) {
             className={clsx(
               'transition-colors',
               `active:bg-primary/25`,
-              `hover:text-gray-700 hover:bg-${accentColorString}-light`,
+              `hover:text-gray-700 hover:bg-primary-light`,
               path === item.url
-                ? `text-${accentColorString}-dark bg-${accentColorString}-light`
+                ? `text-primary-dark bg-primary-light`
                 : `text-gray`,
               'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
             )}
@@ -58,9 +59,7 @@ export default function Sidebar({ config, layoutProps }: SidebarProps) {
               name={item.icon!}
               className={clsx(
                 `mr-2.5 ml-1 mt-0.5`,
-                path === item.url
-                  ? `text-${accentColorString}/50`
-                  : `text-gray/50`
+                path === item.url ? `text-primary/50` : `text-gray/50`
               )}
               size="sm"
             />

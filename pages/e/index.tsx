@@ -3,7 +3,10 @@ export default function Index() {
   return (
     <div className="text-secondary">
       <PageTitle title="Eli's Land" />
-      <p>Coming Soon :)</p>
+      <p className="text-center">
+        Eli prefers skateboarding and bikeriding over making things to post
+        online. If that ever changes, this space is all his :)
+      </p>
     </div>
   );
 }

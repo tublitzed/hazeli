@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ExtraLayoutProps as Props } from '@components/layout';
+import { ExtraLayoutProps as Props } from '@components/layout/layout';
 import { VideoPlayer, PageTitle, Pagination, Sidebar } from '@components';
 import { S3_BUCKET_PREFIX } from '@constants';
 import { SIDEBAR_ALL_BOOKS } from '@components/sidebar/helpers';
@@ -15,16 +15,14 @@ class Collection extends React.Component<CollectionProps> {
       SIDEBAR_ALL_BOOKS.pages.find((p) => p.collectionType === collectionType)
         ?.name || '';
 
-    // Collections without intros:
     if (this.hasIntro) {
-      return [title, `Episode ${collectionItem}`];
+      return [
+        title,
+        collectionItem === 0 ? 'Intro' : `Chapter ${collectionItem}`,
+      ];
     }
 
-    // Collections with intros:
-    return [
-      title,
-      collectionItem === 0 ? 'Intro' : `Chapter ${collectionItem}`,
-    ];
+    return [title, `Episode ${collectionItem}`];
   }
 
   get hasIntro(): boolean {
