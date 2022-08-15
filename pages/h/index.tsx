@@ -66,7 +66,7 @@ export default function Index() {
           </a>
         </Link>
 
-        <Link href="/h/the-adventures">
+        <Link href="/h/adventures">
           <a className={cardStyles}>
             <Icon name="plane" className={iconStyles} size={iconSize} />
             <span>The Adventures</span>
