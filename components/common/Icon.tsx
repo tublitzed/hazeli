@@ -1,5 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+// See https://fontawesome.com/search?m=free
 import {
   faBook,
   faArrowLeft,
@@ -8,6 +10,7 @@ import {
   faHorseHead,
   faBookOpen,
   faShoePrints,
+  faPlane,
 } from '@fortawesome/free-solid-svg-icons';
 
 export type IconName =
@@ -17,6 +20,7 @@ export type IconName =
   | 'book'
   | 'horse-head'
   | 'paw'
+  | 'plane'
   | 'shoe-prints';
 
 // TODO: type this
@@ -26,6 +30,7 @@ const icons = {
   'book-open': faBookOpen,
   'horse-head': faHorseHead,
   'shoe-prints': faShoePrints,
+  plane: faPlane,
   book: faBook,
   paw: faPaw,
 };

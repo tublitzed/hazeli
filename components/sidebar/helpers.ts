@@ -64,5 +64,13 @@ export const SIDEBAR_ALL_BOOKS: SidebarConfig = {
       icon: 'book-open',
       srcPrefix: 'the-book',
     },
+    {
+      name: 'The Adventures',
+      url: '/h/adventures',
+      collectionType: 'THE_ADVENTURES',
+      count: 2,
+      icon: 'plane',
+      srcPrefix: 'adventures',
+    },
   ],
 };
