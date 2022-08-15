@@ -65,6 +65,13 @@ export default function Index() {
             <span>The Book</span>
           </a>
         </Link>
+
+        <Link href="/h/the-adventures">
+          <a className={cardStyles}>
+            <Icon name="plane" className={iconStyles} size={iconSize} />
+            <span>The Adventures</span>
+          </a>
+        </Link>
       </div>
     </>
   );

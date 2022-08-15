@@ -26,7 +26,8 @@ export interface ExtraLayoutProps {
     | 'BEAR_SHOW'
     | 'ANIMAL_BOOK'
     | 'PHOEBE'
-    | 'THE_BOOK';
+    | 'THE_BOOK'
+    | 'THE_ADVENTURES';
   collectionItem?: number;
   pageName?: 'Home';
 }
