@@ -4,7 +4,7 @@ export default function Index() {
     <div className="text-secondary">
       <PageTitle title="Eli's Land" />
       <p className="text-center">
-        Eli prefers skateboarding and bikeriding over making things to post
+        Eli prefers skateboarding and bike riding over making things to post
         online. If that ever changes, this space is all his :)
       </p>
     </div>
