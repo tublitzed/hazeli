@@ -1,3 +1,4 @@
+import React from 'react';
 import { useRouter } from 'next/router';
 import { isHazelSection } from '@helpers';
 import clsx from 'clsx';

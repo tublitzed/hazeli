@@ -5,7 +5,7 @@ import { S3_BUCKET_PREFIX } from '@constants';
 import { SIDEBAR_ALL_BOOKS } from '@components/sidebar/helpers';
 import { getCollectionItem } from '@helpers';
 
-interface CollectionProps {
+export interface CollectionProps {
   collectionType: Props['collectionType'];
   collectionItem: Props['collectionItem'];
 }

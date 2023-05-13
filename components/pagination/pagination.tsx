@@ -1,3 +1,4 @@
+import React from 'react';
 import clsx from 'clsx';
 import { ExtraLayoutProps } from '@components/layout';
 import { Button, Icon, Collection } from '@components';
