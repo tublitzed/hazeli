@@ -2,6 +2,9 @@
   "name": "hazeli",
   "description": "Messing around with stuff for kiddos.",
   "version": "0.0.1",
+  "engines": {
+    "node": "22.x"
+  },
   "main": "index.js",
   "private": true,
   "scripts": {
